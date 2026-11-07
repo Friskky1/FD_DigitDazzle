@@ -4,6 +4,8 @@ A hacking-device minigame for FiveM. A short sequence of shapes, numbers or lett
 
 Use it for heists, door hacks, ATM hacks, laptops, boosting, or anything else that needs a skill check. One export call starts the game and gives you back `true` (hacked) or `false` (failed).
 
+▶ **[Watch the preview video](https://medal.tv/games/screen-capture/clips/nSUsEgroiTrQu9etY?invite=cr-MSxvenosOTY2ODA3OA)**
+
 ## Contents
 
 - [Features](#features)
