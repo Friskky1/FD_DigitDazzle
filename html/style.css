@@ -1,0 +1,188 @@
+:root {
+    --accent: #2ee6a6;
+    --danger: #ff4d6d;
+    --panel: rgba(8, 14, 20, 0.94);
+    --panel-edge: rgba(46, 230, 166, 0.35);
+    --cell: rgba(255, 255, 255, 0.04);
+    --text-dim: #6b8a80;
+    --cyan: #22d3ee;
+    --magenta: #e879f9;
+    --yellow: #facc15;
+    --lime: #a3e635;
+    --orange: #fb923c;
+    --white: #e5e7eb;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: transparent;
+    font-family: Consolas, "Courier New", monospace;
+    color: var(--accent);
+    user-select: none;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#app {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.device {
+    width: 640px;
+    padding: 18px 20px;
+    background: var(--panel);
+    border: 1px solid var(--panel-edge);
+    border-radius: 6px;
+    box-shadow: 0 0 30px rgba(46, 230, 166, 0.15);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    /* --ui-scale is set in game.js from the screen height (1080p = 1.1) */
+    transform: scale(var(--ui-scale, 1.1));
+}
+
+.device.success {
+    border-color: var(--accent);
+    box-shadow: 0 0 40px rgba(46, 230, 166, 0.45);
+}
+
+.device.failure {
+    border-color: var(--danger);
+    box-shadow: 0 0 40px rgba(255, 77, 109, 0.45);
+}
+
+.device-header,
+.device-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.device-title {
+    font-weight: bold;
+}
+
+.round-label,
+.hint {
+    color: var(--text-dim);
+}
+
+.target-label {
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-align: center;
+}
+
+.target-strip {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 8px 0 12px;
+}
+
+.target-strip .cell {
+    width: 54px;
+    height: 54px;
+    border-color: var(--accent);
+}
+
+.timer {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.timer-fill {
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns, 10), 1fr);
+    gap: 4px;
+    min-height: 200px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cell);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: opacity 0.2s, background 0.1s;
+}
+
+.cell svg {
+    width: 72%;
+    height: 72%;
+    fill: var(--shape-color);
+    fill-opacity: 0.25;
+    stroke: var(--shape-color);
+    stroke-width: 6;
+    stroke-linejoin: round;
+}
+
+.cell .glyph {
+    display: inline-block;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1;
+    color: var(--shape-color);
+    text-shadow: 0 0 6px var(--shape-color);
+}
+
+.target-strip .cell .glyph {
+    font-size: 30px;
+}
+
+.cell.selected {
+    background: rgba(46, 230, 166, 0.16);
+    border-color: var(--accent);
+}
+
+.cell.wrong {
+    background: rgba(255, 77, 109, 0.22);
+    border-color: var(--danger);
+}
+
+.cell.answer {
+    background: rgba(46, 230, 166, 0.3);
+    border-color: var(--accent);
+}
+
+.cell.blink {
+    opacity: 0.05;
+}
+
+.device-footer {
+    margin-top: 12px;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.failure {
+    color: var(--danger);
+}
